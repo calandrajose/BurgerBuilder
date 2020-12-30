@@ -1,13 +1,13 @@
 import React from 'react';
-import classes from './Burguer.module.css'
-import BurguerIngredient from './BurguerIngredient/BurguerIngredient';
+import classes from './Burger.module.css'
+import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-const burguer = (props) => {
+const burger = (props) => {
 
     const ingredients = Object.keys(props.ingredients)
     .map(ingKey=>{
         return [...Array(props.ingredients[ingKey])].map((_, index)=>{
-            return <BurguerIngredient key={ingKey + index} type= {ingKey}/>
+            return <BurgerIngredient key={ingKey + index} type= {ingKey}/>
         })
     })
     .reduce((arr, ing)=>{
@@ -17,12 +17,12 @@ const burguer = (props) => {
     console.log(ingredients);
 
     return (
-        <div className={classes.Burguer}>
-            <BurguerIngredient type='bread-top'/>
+        <div className={classes.Burger}>
+            <BurgerIngredient type='bread-top'/>
             {ingredients.length === 0 ? <p>Start adding ingredients</p>: ingredients}
-            <BurguerIngredient type='bread-bottom'/>
+            <BurgerIngredient type='bread-bottom'/>
         </div>
     );
 };
 
-export default burguer;
+export default burger;
