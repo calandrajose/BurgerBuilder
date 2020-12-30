@@ -10,8 +10,13 @@
 
 # production
 /build
+<<<<<<< HEAD
 /scripts
 /config
+=======
+/config
+/scripts
+>>>>>>> class-based-components-version
 
 # misc
 .DS_Store
