@@ -1,0 +1,13 @@
+.BurgerButton{
+    background-color: white;
+    height: 80%;
+    border:2.5px solid rgb(236, 175, 5);
+    border-radius: 5px;
+    margin: 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.BurgerButton:hover{
+    height: 85%;
+}

@@ -3,6 +3,7 @@ import Aux from "../../hoc/Auxiliary";
 import Burger from "../../components/Burger/Burger";
 import BuildControls from "../../components/Burger/BuildControls/BuildControls";
 import Modal from "../../components/UI/Modal/Modal";
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary'
 
 
 const INGREDIENT_PRICES = {
@@ -21,8 +22,21 @@ export default class BurgerBuilder extends Component {
       meat: 0,
     },
     totalPrice: 4,
-    purchasable: false
+    purchasable: false, 
+    purchasing: false
   };
+
+  purchaseHandler = ()=>{
+    this.setState({purchasing:true})
+  }
+  
+  purchaseCancelHandler = () =>{
+    this.setState({purchasing:false})
+  }
+
+  purchaseContinueHandler = () =>{
+    alert('great!')
+  }
 
   updatePurchaseState(ingredients){
       const sum = Object.keys(ingredients)
@@ -77,9 +91,17 @@ export default class BurgerBuilder extends Component {
       disabledInfo[key] = disabledInfo[key] <= 0; //returns true or false for every key value
     }
 
+    // if(this.state.purchasing){
+    //   modal = (<Modal>
+    //   <OrderSummary ingredients={this.state.ingredients}/>
+    // </Modal>)
+    // }
+
     return (
       <Aux>
-          <Modal/>
+          <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
+            <OrderSummary price={this.state.totalPrice} continue={this.purchaseContinueHandler} cancel={this.purchaseCancelHandler} ingredients={this.state.ingredients}/>
+          </Modal>
         <Burger ingredients={this.state.ingredients} />
         <BuildControls
           price={this.state.totalPrice}
@@ -87,6 +109,7 @@ export default class BurgerBuilder extends Component {
           ingredientAdded={this.addIngredientHandler}
           ingredientRemoved={this.removeIngredientHandler}
           purchasable={this.state.purchasable}  
+          purchasing={this.purchaseHandler}
         />
       </Aux>
     );
