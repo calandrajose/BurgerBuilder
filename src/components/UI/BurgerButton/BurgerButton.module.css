@@ -11,3 +11,10 @@
 .BurgerButton:hover{
     height: 85%;
 }
+
+
+@media (min-width: 499px){
+    .BurgerButton{
+        display: none;
+    }
+}

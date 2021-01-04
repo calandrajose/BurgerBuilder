@@ -8,8 +8,10 @@ const toolbar = (props) => (
     <header className={classes.Toolbar}>
         {/* <div>MENU</div> */}
         {/* <div className={[classes.Logo,classes.DesktopOnly].join(' ')}>
-            <Logo/>
         </div> */}
+        <div className={[classes.DesktopOnly, classes.Logo].join(' ')}>
+            <Logo/>
+        </div>
         <BurgerButton clicked={props.clicked}/>
         <nav className={classes.DesktopOnly}>
             <ul><NavigationItems/></ul>
