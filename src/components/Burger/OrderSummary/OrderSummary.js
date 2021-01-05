@@ -9,7 +9,7 @@ const orderSummary = (props) => {
     return(
     <Aux>
         <h3>Your order</h3>
-        <p>A delicious burgu</p>
+        <p>A delicious burger</p>
         <ul>{ingredientSummary}</ul>
         <p>Total: <strong>USD {props.price.toFixed(2)}</strong></p>
         <p>Continue with Checkout?</p>
