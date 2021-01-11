@@ -28,6 +28,7 @@ class Layout extends Component {
                     clicked={this.sideDrawerToggleHandler}
                     />
                 <SideDrawer 
+                    key='key'
                     closed={this.sideDrawerCloseHandler} 
                     open={this.state.showSideDrawer}/>
                 {/* <div>Toolbar, SideDrawer, Backdrop</div> */}
