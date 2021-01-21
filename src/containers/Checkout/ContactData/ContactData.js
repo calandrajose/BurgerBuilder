@@ -132,7 +132,7 @@ import * as actions from '../../../store/actions/index'
       orderData: formData
     }; //should be calculated on server side
 
-      this.props.onOrderBurger(order)
+      this.props.onOrderBurger(order, this.props.token)
   };
 
   validateInputs = (value, rules) => {
@@ -223,13 +223,14 @@ const mapStateToProps = state=>{
   return{
       ings: state.burgerBuilder.ingredients,
       price: state.burgerBuilder.totalPrice,
-      loading: state.order.loading
+      loading: state.order.loading,
+      token: state.auth.token
   }
 }
 
 const mapDispatchToProps= dispatch=>{
   return{
-    onOrderBurger: (orderData)=> dispatch(actions.purchaseBurger(orderData))
+    onOrderBurger: (orderData, token)=> dispatch(actions.purchaseBurger(orderData, token))
   }
 }
 

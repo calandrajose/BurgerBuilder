@@ -14,7 +14,9 @@ const toolbar = (props) => (
         </div>
         <BurgerButton clicked={props.clicked}/>
         <nav className={classes.DesktopOnly}>
-            <ul><NavigationItems/></ul>
+            {/* <ul> */}
+                <NavigationItems isAuthenticated={props.isAuth}/>
+                {/* </ul> */}
         </nav>
     </header>
 )
