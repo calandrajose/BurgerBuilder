@@ -71,7 +71,6 @@ class Auth extends Component {
     if(!this.props.buildingBurger && this.props.authRedirectPath !== '/'){
       this.props.onSetRedirectPath();
     }
-    console.log('building: '+this.props.buildingBurger + ' path: ' +this.props.authRedirectPath);
   }
 
   inputChangeHandler = (event, controlName) => {
