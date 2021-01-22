@@ -7,7 +7,7 @@ import Input from "../../../components/UI/Input/Input";
 import {connect} from 'react-redux'
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler'
 import * as actions from '../../../store/actions/index'
-import {updateObject} from '../../../shared/utility'
+import {updateObject, validateInputs} from '../../../shared/utility'
 
  class ContactData extends Component {
   state = {
@@ -98,26 +98,6 @@ import {updateObject} from '../../../shared/utility'
     formIsValid: false
   };
 
-  // componentDidMount(){
-  //   this.setState({name: this.createFormField('input', 'text', 'your name')})
-  // }
-
-  // createFormField = (elementType, type, placeholder) => {
-  //   return {
-  //     elementType: elementType,
-  //     elementConfig: {
-  //       type: type,
-  //       placeholder: placeholder,
-  //     },
-  //     value: "",
-  //     validation: {
-  //       required: true
-  //     },
-  //     valid: false,
-  //     touched: false
-  //   };
-  // };
-
   orderHandler = (event) => {
     event.preventDefault();
 
@@ -137,35 +117,10 @@ import {updateObject} from '../../../shared/utility'
       this.props.onOrderBurger(order, this.props.token)
   };
 
-  validateInputs = (value, rules) => {
-    let isValid = true;
-
-    if (rules.required) {
-      isValid = value.trim() !== '' && isValid;
-    }
-
-    if (rules.minLength && rules.maxLength) {
-      isValid = value.length >= rules.minLength && isValid;
-    }
-
-    if (rules.isEmail) {
-      const pattern = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
-      isValid = pattern.test(value) && isValid
-  }
-
-    if (rules.maxLength) {
-      isValid = value.length <= rules.maxLength && isValid;
-    }
-
-    return isValid;
-  };
-
   inputChangeHandler = (event, inputId) => {
-    
-
     const updatedFormElement = updateObject(this.state.orderForm[inputId],{
       value:event.target.value,
-      valid:this.validateInputs(event.target.value, this.state.orderForm[inputId].validation),
+      valid: validateInputs(event.target.value, this.state.orderForm[inputId].validation),
       touched:true
     } );
 
