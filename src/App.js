@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Redirect, withRouter } from 'react-router-dom';
+import { Route, Redirect, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import Layout from './hoc/Layout/Layout';
@@ -19,22 +19,30 @@ class App extends Component {
     
       let routes = (
         <div>
-          <Route path='/auth' exact component={Auth} />
-          <Route path='/' exact component={BurgerBuilder} />
-          <Redirect to='/'/>
+          <Switch>
+            <Route path='/auth' exact component={Auth} />
+            <Route path='/' exact component={BurgerBuilder} />
+            <Redirect to='/'/>
+            <Redirect to='/'/>
+          </Switch>
         </div>
       )
 
       if(this.props.isAuthenticated){
         routes = (
           <div>
-            <Route path='/checkout' component={Checkout} />
-            <Route path='/orders' component={Orders} />
-            <Route path='/logout' component={Logout} />
-            <Route path='/' exact component={BurgerBuilder} />
+            <Switch>
+              <Route path='/checkout' component={Checkout} />
+              <Route path='/orders' component={Orders} />
+              <Route path='/logout' component={Logout} />
+              <Route path='/' exact component={BurgerBuilder} />
+              <Route path='/auth' exact component={Auth} />
+              {<Redirect to='/'/>}
+            </Switch>
           </div>
         )
       }
+
     return (
       <div>
         <Layout>
