@@ -68,7 +68,6 @@ export const fetchOrders = (token, userId) => {
         for (let key in resp.data) {
           fetchedOrders.push({ ...resp.data[key], id: key });
         }
-        //console.log(fetchedOrders);
         dispatch(fetchOrdersSuccess(fetchedOrders));
       })
       .catch((error) => {
