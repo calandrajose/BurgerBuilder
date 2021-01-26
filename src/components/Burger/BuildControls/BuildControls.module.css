@@ -1,14 +1,22 @@
 .BuildControls{
     width: 100%;
+    min-height: 40%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     background-color: #cf8f2e;
     display: flex;
     flex-flow: column;
     align-items: center;
-    box-shadow: 0 2xp 1px #ccc;
+    box-shadow: 0 2px 1px #ccc;
     margin: auto;
     padding: 10px 0;
 }
 
+/* .BuildControls:not(*:root){
+    position: absolute;
+    height: 50%;
+} */
 
 .OrderButton {
     background-color: #DAD735;
@@ -48,5 +56,11 @@
     }
     100% {
         transform: scale(1);
+    }
+}
+
+@media (max-width: 500px){
+    .BuildControls{
+        height: 50%;
     }
 }
