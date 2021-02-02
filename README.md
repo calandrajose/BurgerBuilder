@@ -1,4 +1,6 @@
-[Check the projecto here](https://the-burger-builder-9dc47.web.app/)
+[CHECK THE PROJECT HERE](https://the-burger-builder-9dc47.web.app/)
+
+You can also clone this repo and follow the next steps in order to run it locally
 
 # Getting Started with Create React App
 
